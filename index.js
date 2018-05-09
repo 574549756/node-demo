@@ -27,7 +27,7 @@ var server = http.createServer(function(request, response){
     string = string.replace('&&&amount&&&', amount)
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.statusCode = 200
-    response.write('可以，进来了')
+    response.write(string)
     response.end()
   } else if (path === '/style.css') {
     var string = fs.readFileSync('./style.css', 'utf8')
