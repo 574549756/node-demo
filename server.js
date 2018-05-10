@@ -23,10 +23,10 @@ var server = http.createServer(function (request, response) {
 
     if (path === '/') {
         var string = fs.readFileSync('./index.html', 'utf8')
-        response.setHeader('Content-Type', 'text/html;charset=utf-8')
-        response.statusCode = 200
-        response.write(string)
-        response.end()
+        response.statusCode = 200                                       //第一部分        
+        response.setHeader('Content-Type', 'text/html;charset=utf-8')       //第二部分
+        response.write(string)                                          //第四部分
+        response.end()                                                      //结束
     } else if (path === '/main.js'){
         var string = fs.readFileSync('./main.js', 'utf8')
         response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
@@ -35,7 +35,7 @@ var server = http.createServer(function (request, response) {
         response.end()
     } else if (path === '/xxx' && method === 'GET'){
         response.statusCode = 200
-        response.setHeader('Content-type', 'text/xml;charset=utf-8')
+        response.setHeader('Content-type', 'text/json;charset=utf-8')
         response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
         response.write(`
         {
